@@ -67,7 +67,19 @@ function outputRoomname(room){
 
 // Add users to DOM
 function outputUsers(users){
-    userList.innerHTML = `
-        ${users.map( user =>`<li>${user.username}</li>`).join('')}
-    `
+     userList.innerHTML = '';
+  users.forEach((user) => {
+    const li = document.createElement('li');
+    li.innerText = user.username;
+    userList.appendChild(li);
+  });
 }
+
+//Prompt the user before leave chat room
+document.getElementById('leave-btn').addEventListener('click', () => {
+  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
+  if (leaveRoom) {
+    window.location = '../index.html';
+  } else {
+  }
+});
